@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+}
+
+
+/*Home */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.75rem;
+  z-index: 10;
+}
+
+.navbar a {
+  color: rgb(212, 100, 100);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+.flecha 
+{
+  color: rgb(178, 132, 170);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.btnhome {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 20px;
+  background: #1a1a2e;
+  color: white;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.home-view {
+  background-image: url('./assets/venom-fondo.jpg');
+  background-size: cover; 
+  background-position: center left 72%;
+  background-repeat:no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  height: 100dvh;
+  color: white;
+  text-align: center;
+}
+
+/* ---- Chat ---- */
+
+.chat-view {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(to top, #000000, #180029);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.messages {
+  background-image: url('./assets/fondochatsmall.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat:no-repeat;
+  flex: 1 1 0;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: white;
+  flex-shrink: 0;
+}
+
+#message-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+#send-btn {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 20px;
+  background: #1a1a2e;
+  color: white;
+  cursor: pointer;
+}
+
+/* ---- Mensajes (usuario vs personaje) ---- */
+
+.message {
+  padding: 0.6rem 1rem;
+  border-radius: 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message-user {
+  align-self: flex-end;
+  background: #1a1a2e;
+  color: white;
+}
+
+.message-character {
+  align-self: flex-start;
+  background: #000000;
+  color: #c061f3;
+  border: 1px solid #bf4545;
+}
+
+/* ---- About ---- */
+.about-view {
+  background-image: url('./assets/fondoabout.png');
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: darken;
+  background-size:cover;
+  background-position: center;
+  background-repeat:no-repeat;
+  
+  color: white;
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  text-align: center;
+  padding: 2rem;
+}
+ 
+.about-content { 
+    display: flex;
+    flex-direction: column;
+    max-width: 60rem;
+    gap: 2rem;
+}
+
+/* ---- Responsive Design Medias queries ---- */
+
+/* Tablet: 768px → 48rem */
+@media (min-width: 48rem) {
+  .chat-view 
+  .home-view {
+    max-width: 37.5rem;   /* 600px */
+    margin: 0 auto;
+  }
+}
+
+/* Desktop: 1024px → 64rem */
+@media (min-width: 64rem) {
+  .chat-view
+  .home-view {
+    max-width: 50rem;      /* 800px */
+  }
+}
