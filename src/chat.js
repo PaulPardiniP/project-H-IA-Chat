@@ -1,5 +1,13 @@
 const mensajesDePrueba = [];
 
+function debounce(fn, delay) {
+  let timer = null;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
 function renderMessages(mensajes) {
   const $messages = document.getElementById('messages');
 
@@ -61,7 +69,7 @@ export function renderChatView() {
   `;
 
 
-    renderMessages(mensajesDePrueba); 
+  renderMessages(mensajesDePrueba); 
   // Acá después van los addEventListener para el form, etc.
   
   const $form = document.getElementById('composer');
@@ -72,15 +80,34 @@ $form.addEventListener('submit', async (e) => {
   const texto = $input.value.trim();
   if (!texto) return;
 
+  chatHistory = appendUserMessage(chatHistory, texto);
   renderMessages([{ role: 'user', content: texto }]);
   $input.value = '';
 
   try {
-    const data = await getReply([{ role: 'user', content: texto }]);
+    const payloadHistory = getTrimmedHistory(chatHistory);
+    const data = await getReply(payloadHistory);
+    chatHistory = appendAssistantMessage(chatHistory, data.reply);
     renderMessages([{ role: 'assistant', content: data.reply }]);
   } catch (err) {
     renderMessages([{ role: 'assistant', content: 'Uh... algo salió mal humano. Intentá de nuevo si quieres.' }]);
   }
 });
+
+/* Ultimo agregado */
+
+function appendUserMessage(messages, text) {
+  return [...messages, { role: 'user', content: text }];
+}
+
+function appendAssistantMessage(messages, text) {
+  return [...messages, { role: 'assistant', content: text }];
+}
+
+function getTrimmedHistory(messages, maxTurns = 12) {
+  return messages.slice(-maxTurns);
+}
+
+let chatHistory = [];
 
 }
