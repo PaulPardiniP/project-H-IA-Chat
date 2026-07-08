@@ -1,15 +1,4 @@
-const mensajesDePrueba = [
-  { role: "assistant", content: "¿Qué querés, humano?" },
-  { role: "user", content: "Hola Venom, ¿cómo estás?" },
-  { role: "assistant", content: "Hambriento. Siempre hambriento." },
-  { role: "user", content: "¿De qué tenés hambre?" },
-  { role: "assistant", content: "De cerebros. Y de caos." },
-  { role: "user", content: "Qué intenso sos." },
-  { role: "assistant", content: "Somos Venom. Nunca simples." },
-  { role: "user", content: "¿Te llevás bien con Eddie?" },
-  { role: "assistant", content: "A veces. Peleamos por el control." },
-  { role: "user", content: "Entiendo." },
-];
+const mensajesDePrueba = [];
 
 function renderMessages(mensajes) {
   const $messages = document.getElementById('messages');
