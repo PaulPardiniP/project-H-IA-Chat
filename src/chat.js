@@ -26,6 +26,25 @@ function renderMessages(mensajes) {
   $messages.scrollTop = $messages.scrollHeight;
 }
 
+async function getReply(messages) {
+  const response = await fetch('/api/functions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ messages })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || 'Error al obtener respuesta');
+  }
+
+  return data;
+}
+
+
 export function renderChatView() {
   const app = document.getElementById('app');
 
@@ -55,4 +74,24 @@ export function renderChatView() {
 
     renderMessages(mensajesDePrueba); 
   // Acá después van los addEventListener para el form, etc.
+  
+  const $form = document.getElementById('composer');
+  const $input = document.getElementById('message-input');
+
+$form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const texto = $input.value.trim();
+  if (!texto) return;
+
+  renderMessages([{ role: 'user', content: texto }]);
+  $input.value = '';
+
+  try {
+    const data = await getReply([{ role: 'user', content: texto }]);
+    renderMessages([{ role: 'assistant', content: data.reply }]);
+  } catch (err) {
+    renderMessages([{ role: 'assistant', content: 'Uh... algo salió mal humano. Intentá de nuevo si quieres.' }]);
+  }
+});
+
 }
