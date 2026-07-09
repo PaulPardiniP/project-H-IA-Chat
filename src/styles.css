@@ -66,6 +66,27 @@ body {
 
 /* ---- Chat ---- */
 
+.online-dot {
+  width: 0.53rem;
+  height: 0.53rem;
+  border-radius: 50%;
+  background: #da44f8;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.online-dot.quota-exceeded {
+  background: #c31111;
+}
+.online-dot.offline {
+  background: #6c6565;
+}
+.status-target.offline {
+  color: #6c6565;
+}
+
+
+/* Continua chat */
 .chat-view {
   display: flex;
   flex-direction: column;

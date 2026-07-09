@@ -60,7 +60,7 @@ const model = genAI.getGenerativeModel({
     const lastMessage = messages[messages.length - 1].content;
     const result = await chat.sendMessage(lastMessage);
     const response = await result.response;
-    const text = response.text();
+    const text = response.text().trim().replace(/\*/g, '');
 
     return res.status(200).json({ reply: text });
 
