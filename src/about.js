@@ -19,7 +19,7 @@ export function renderAboutView() {
       <section>
         <h2>Historia</h2>
         <p>
-        OrigenEl simbionte pertenece a una raza alienígena conocida como los Klyntar. Apareció por primera vez en los cómics en 1984 durante el evento Secret Wars. Spider-Man fue su primer huésped terrestre, pero al descubrir su naturaleza corrupta y parasitaria, se separó de él. Rechazada, la criatura se vinculó con el periodista Eddie Brock, formando el monstruoso ser conocido como Venom para vengarse juntos.
+        El simbionte pertenece a una raza alienígena conocida como los Klyntar. Apareció por primera vez en los cómics en 1984 durante el evento Secret Wars. Spider-Man fue su primer huésped terrestre, pero al descubrir su naturaleza corrupta y parasitaria, se separó de él. Rechazada, la criatura se vinculó con el periodista Eddie Brock, formando el monstruoso ser conocido como Venom para vengarse juntos.
         </p>
       </section>
 
