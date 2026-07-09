@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   try {
     const { messages } = req.body;
     if (!isValidMessages(messages)) {   // ← esta línea es nueva
-  return res.status(400).json({ error: 'Formato de mensajes inválido' });   // ← y esta
+    return res.status(400).json({ error: 'Formato de mensajes inválido' });   // ← y esta
 }
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -66,6 +66,11 @@ const model = genAI.getGenerativeModel({
 
   } catch (error) {
     console.error('Error calling Gemini:', error);
+    if (error.status === 429) {
+      return res.status(429).json({ 
+       error: 'Se acabó la cuota de mensajes por ahora. Probá de nuevo más tarde.' 
+    });
+  }
     return res.status(500).json({ error: 'Error generating response' });
   }
 }
